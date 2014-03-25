@@ -22,7 +22,7 @@ public class HW4_1114{
 	public static void main(String args[]) throws 	
 			JsonParseException, JsonMappingException, IOException{
 		Sql h2 = new Sql();
-		//h2.close();
+		h2.close();
 		
 		ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
@@ -30,7 +30,7 @@ public class HW4_1114{
 		page1 page1 = mapper.readValue(new File("page1.json"), page1.class);
 		
 		System.out.println(page1.getTotal());
-		
+		//System.out.println(page1.getMovies().length);
 	
 		Users user = mapper.readValue(new File("user.json"), Users.class);
 		

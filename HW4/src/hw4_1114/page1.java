@@ -4,20 +4,25 @@ package hw4_1114;
 
 public class page1 {
 	
-	private int _total;
-	public int getTotal() { return _total; }
-/*
+	private String total;
+	public String getTotal() { return total; }
+	
+	/*
+	private String movies_id;
+  	
+    public String getid() { return movies_id; }
+
     public static class movies {
       private String[] _id;
       	
-      public String getid() { return _id; }
+      public String[] getid() { return _id; }
       
-      public void setId(String s) { _id = s; }
+      public void setid(String[] s) { id = s; }
       
     }
 
-    private movies _movies;
-    public movies getMovies() { return _movies; }
-  */  
+    private String[] movies;
+    public String[] getMovies() { return movies; }
+  */
     
 }
