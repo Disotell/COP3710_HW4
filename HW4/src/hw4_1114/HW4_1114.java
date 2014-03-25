@@ -30,7 +30,7 @@ public class HW4_1114{
 		page1 page1 = mapper.readValue(new File("page1.json"), page1.class);
 		
 		System.out.println(page1.getTotal());
-		//System.out.println(page1.getMovies().length);
+		System.out.println(page1.getMovies().size());
 	
 		Users user = mapper.readValue(new File("user.json"), Users.class);
 		
