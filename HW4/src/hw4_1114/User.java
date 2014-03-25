@@ -1,3 +1,11 @@
+/******************************************************************
+ * Author: 1114
+ * Date: 3/23/2014
+ * Assignment: HW4
+ * Class:COP 3720
+ * Professor: Dr. Dahai Guo
+ * University: Florida Gulf Coast University
+ ******************************************************************/
 package hw4_1114;
 public class User {
     public enum Gender { MALE, FEMALE };

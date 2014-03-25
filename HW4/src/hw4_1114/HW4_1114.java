@@ -1,4 +1,14 @@
+/******************************************************************
+ * Author: 1114
+ * Date: 3/23/2014
+ * Assignment: HW4
+ * Class:COP 3720
+ * Professor: Dr. Dahai Guo
+ * University: Florida Gulf Coast University
+ ******************************************************************/
+
 package hw4_1114;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -11,7 +21,7 @@ public class HW4_1114{
 	public static void main(String args[]) throws 	
 			JsonParseException, JsonMappingException, IOException{
 		Sql h2 = new Sql();
-		h2.close();
+		//h2.close();
 		
 		ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
 		User user = mapper.readValue(new File("user.json"), User.class);
@@ -21,4 +31,4 @@ public class HW4_1114{
 		mapper.writeValue(new File("new_user.json"), user);
 		System.out.println(user.getName().getFirst());
 	}
-}
+} 
