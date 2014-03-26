@@ -9,8 +9,12 @@
 
 package hw4_1114;
 
+import hw4_1114.JsonDeserializer.movies;
+
+
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -22,23 +26,32 @@ public class HW4_1114{
 	public static void main(String args[]) throws 	
 			JsonParseException, JsonMappingException, IOException{
 		Sql h2 = new Sql();
-		h2.close();
-		
+		int count=0;
 		ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
 		
-		page1 page1 = mapper.readValue(new File("page1.json"), page1.class);
+		for(int i = 1;i<25;i++){
 		
-		System.out.println(page1.getTotal());
-		System.out.println(page1.getMovies().size());
-	
-		Users user = mapper.readValue(new File("user.json"), Users.class);
 		
-		user.getName().setFirst("Jackson");
+		JsonDeserializer page = mapper.readValue(new File((System.getProperty("user.dir")+"\\movies\\page"+i+".json")), JsonDeserializer.class);
 		
-		mapper.writeValue(new File("new_user.json"), user);
+		//System.out.println(page1.getTotal());
+		ArrayList<movies> th= page.getMovies();
 		
-		System.out.println(user.getName().getFirst());
+		for (movies s : th){
+			h2.insertMovie(s.getId(),s.getTitle(),s.getYear(),s.getMpaa_rating (),s.getRatings().getAudience_score(),s.getRatings().getCritics_score());
+			
+			
+			//System.out.println("Critics_Score: "+s.getRatings().getCritics_score()+ 
+			//" & Audience Score: "+ s.getRatings().getAudience_score()+" MPAA Ranking: "+s.getMpaa_rating ()+"\n");
+		
+			
+			count++;
+		}
+		
+		}
+		System.out.println("Movies "+count);
+		h2.close();
 		
 	}
 } 

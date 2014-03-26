@@ -31,7 +31,7 @@ public class Sql {
 		try {
 			Class.forName("org.h2.Driver");
 			conn = DriverManager.getConnection("jdbc:h2:" + // Protocol
-					System.getProperty("user.dir") + "/movies", // db file path
+					System.getProperty("user.dir") + "/moviess", // db file path
 					"sa", // user
 					""); // password
 
@@ -43,7 +43,7 @@ public class Sql {
 		}
 	}
 
-	//Creates movies H2 database 
+	// Creates movies H2 database
 	public void create() {
 		try {
 			Statement statement = conn.createStatement();
@@ -67,7 +67,8 @@ public class Sql {
 					+ "constraint pk_Actor primary key (id)" + ");");
 
 			// Create Character Table
-			statement.execute("create table IF NOT EXISTS Character("
+			statement
+					.execute("create table IF NOT EXISTS Character("
 							+ "actor_id varchar(100) not null,"
 							+ "movie_id varchar(100) not null,"
 							+ "character varchar(100) not null,"
@@ -75,6 +76,78 @@ public class Sql {
 							+ "constraint fk_movie_id foreign key(movie_id)references Movie(id),"
 							+ "constraint pk_Character primary key (actor_id,movie_id,character)"
 							+ ");");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public String checkString(String s) {
+		char[] temp = s.toCharArray();
+		String newS = "";
+		for (int i = 0; i < temp.length; i++) {
+			if (temp[i] == '\'') {
+				newS = newS + temp[i] + temp[i];
+			} else {
+				newS = newS + temp[i];
+			}
+		}
+
+		return newS;
+	}
+
+	public void insertMovie(Integer id, String title, Integer year,
+			String mpaa_rating, Integer audience_score, Integer critics_score) {
+
+		title = checkString(title);
+		mpaa_rating = checkString(mpaa_rating);
+
+		String insertMovie = "INSERT INTO MOVIE VALUES ('" + id + "','" + title
+				+ "','" + year + "','" + mpaa_rating + "','" + audience_score
+				+ "','" + critics_score + "');";
+
+		try {
+			Statement statement = conn.createStatement();
+			// Insert Movie Table Entry
+			statement.execute(insertMovie);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void insertActor(Integer id, String name) {
+
+		name = checkString(name);
+
+		String insertActor = "INSERT INTO ACTOR VALUES('" + id + "','" + name
+				+ "');";
+
+		try {
+			Statement statement = conn.createStatement();
+			// Insert Actor Table Entry
+			statement.execute(insertActor);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void insertCharacter(Integer actor_id, Integer movie_id,
+			String character) {
+
+		character = checkString(character);
+
+		String insertCharacter = "INSERT INTO ACTOR VALUES('" + actor_id
+				+ "','" + movie_id + "','" + character + "');";
+
+		try {
+			Statement statement = conn.createStatement();
+			// Insert Character Table Entry
+			statement.execute(insertCharacter);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
