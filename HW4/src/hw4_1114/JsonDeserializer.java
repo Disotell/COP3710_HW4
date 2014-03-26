@@ -1,3 +1,12 @@
+/******************************************************************
+ * Author: 1114
+ * Date: 3/23/2014
+ * Assignment: HW4
+ * Class:COP 3710
+ * Professor: Dr. Dahai Guo
+ * University: Florida Gulf Coast University
+ ******************************************************************/
+
 package hw4_1114;
 
 import java.util.ArrayList;
@@ -60,18 +69,18 @@ public class JsonDeserializer {
 		public void setYear(Integer i) {
 			year = i;
 		}
-		
-		//MPAA Rating 
-				private String mpaa_rating ;
 
-				public String getMpaa_rating () {
-					return mpaa_rating ;
-				}
+		// MPAA Rating
+		private String mpaa_rating;
 
-				public void setMpaa_rating (String s) {
-					mpaa_rating  = s;
-				}
-		
+		public String getMpaa_rating() {
+			return mpaa_rating;
+		}
+
+		public void setMpaa_rating(String s) {
+			mpaa_rating = s;
+		}
+
 		// Rating
 		private Ratings ratings;
 
@@ -105,90 +114,15 @@ public class JsonDeserializer {
 			}
 		}
 
-		// /////////////////////////////////////
-
 		// Abridged Cast
-		
-		/*
-		
-		private LinkedHashMap<String, characters> abridged_cast;
+		private abridged_cast[] abridged_cast;
 
-		public LinkedHashMap<String, characters> getAbridged_cast() {
+		public abridged_cast[] getAbridged_cast() {
 			return abridged_cast;
 		}
 
-		public void setAbridged_cast(LinkedHashMap<String, characters> o) {
-			this.abridged_cast = o;
+		public void setAbridged_cast(abridged_cast[] abridged_cast) {
+			this.abridged_cast = abridged_cast;
 		}
-		
-		   
-		   public class characters{
-			   
-		   }
-			
-		
-		
-		
-			
-		private abridged_cast abridged_cast;
-
-		public abridged_cast getAbridged_cast() {
-			return abridged_cast;
-		}
-
-		public void setAbridged_cast(abridged_cast o) {
-			abridged_cast = o;
-		}
-
-		private LinkedHashMap<String @JsonProperty("Characters"), Characters> abridged_cast;
-
-		public LinkedHashMap<characters, characters> getAbridged_cast() {
-			return abridged_cast;
-		}
-
-		public void setAbridged_cast(LinkedHashMap<characters, characters> o) {
-			this.abridged_cast = o;
-		}
-		
-		
-		public class abridged_cast {
-			
-			
-			private ArrayList<characters> characters;
-
-			public ArrayList<characters> getCharacters() {
-				return characters;
-			}
-
-			public void setCharacters(ArrayList<characters> o) {
-				characters = o;
-			}
-
-		public class characters {
-
-			private String name;
-
-			public String getName() {
-				return name;
-			}
-
-			public void setName(String s) {
-				name = s;
-			}
-			
-			private String characters;
-
-			public String getCharacters() {
-				return characters;
-			}
-
-			public void setCharacters(String s) {
-				characters = s;
-			}
-		}
-	*/
-		// ///////////////////////////////////////////////////
-	
-
-}
-}
+	}//End of Class movies
+}//End of Class JsonDeserializer
